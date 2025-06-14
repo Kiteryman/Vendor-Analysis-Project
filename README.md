@@ -71,4 +71,5 @@ Based on the analysis, the following actionable recommendations are proposed:
 
 ### 5. Acknowledgments
 
-This project and its methodology are inspired by the end-to-end data analytics project tutorial on Vendor Performance Analysis provided by **Tech Classes**. Their detailed guide served as a valuable reference for the project structure, analytical approach, and KPI selection.
+- This project and its methodology are inspired by the end-to-end data analytics project tutorial on Vendor Performance Analysis provided by **Tech Classes**. Their detailed guide served as a valuable reference for the project structure, analytical approach, and KPI selection.
+- Data Source: https://drive.google.com/file/d/1F52cAm1aHjq4uQvsnLbuWotK59bzdHuV/view?usp=drive_link
