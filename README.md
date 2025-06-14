@@ -17,7 +17,7 @@ The primary objectives of this analysis are to:
 
 The project was executed in two main phases using two separate Jupyter Notebooks:
 
-**Phase 1: Data Engineering & Feature Creation (`Data Cleaning & Feature Engineering.ipynb`)**
+**Phase 1: Data Engineering & Feature Creation (`EDA.ipynb`)**
 This phase focused on building the foundational dataset for analysis. It involved connecting to the `inventory.db` SQLite database, aggregating data from multiple transactional tables (sales, purchases, inventory), and creating a unified `vendor_sales_summary` table. Key Performance Indicators (KPIs) were engineered to measure performance, including `GrossProfit`, `ProfitMargin`, `StockTurnover`, and `SalesPurchaseratio`.
 
 **Phase 2: Statistical Analysis & Visualization (`Vendor Performance Analysis.ipynb`)**
@@ -56,10 +56,16 @@ To formally verify the visual findings, a hypothesis test was conducted:
 
 Based on the analysis, the following actionable recommendations are proposed to enhance profitability and operational efficiency:
 
-* **Re-evaluate Pricing:** For low-sales, high-margin brands, re-evaluate pricing strategies to boost sales volume without sacrificing existing profitability.
+* **Re-evaluate Pricing:** For low-sales, high-margin brands, re-evaluate pricing strategies to boost sales volume without sacrificing profitability.
 * **Diversify Vendor Partnerships:** Reduce dependency on a few key suppliers to mitigate supply chain risks.
 * **Leverage Bulk Purchasing:** Continue to leverage bulk purchasing advantages with top vendors to maintain competitive pricing and optimize inventory.
 * **Optimize Slow-Moving Inventory:** For products with low turnover, adjust purchase quantities, launch targeted clearance sales, or revise storage strategies to reduce holding costs.
-* **Enhance Marketing for Low-Performers:** Develop enhanced marketing and distribution strategies for low-performing vendors to drive higher sales volume.
+* **Enhance Marketing for Low-Performers:** Develop enhanced marketing and distribution strategies for low-performing vendors to drive higher sales volumes without compromising profit margins.
 
 By implementing these recommendations, the company can achieve sustainable profitability, mitigate risks, and enhance overall operational efficiency.
+
+---
+
+### 5. Acknowledgments
+
+This project and its methodology are inspired by the end-to-end data analytics project tutorial on Vendor Performance Analysis provided by **Tech Classes**. Their detailed guide served as a valuable reference for the project structure, analytical approach, and KPI selection.
