@@ -1,0 +1,73 @@
+# Vendor Performance Analysis
+
+## 📝 Description
+
+This project analyzes vendor performance using an inventory database. It involves **data exploration, cleaning, and aggregation** to create a comprehensive vendor summary. The analysis focuses on identifying key metrics to evaluate vendor profitability and performance, culminating in a **hypothesis test** to determine if there is a significant difference in profit margins between top and low-performing vendors.
+
+This repository contains two main Jupyter notebooks:
+1.  **EDA.ipynb**: Focuses on data extraction, cleaning, and preprocessing.
+2.  **Vendor Performance Analysis.ipynb**: Conducts exploratory data analysis and hypothesis testing on the cleaned data.
+
+---
+
+## ✨ Features
+
+* **Exploratory Data Analysis (EDA)**: In-depth analysis of the database tables to understand data distributions and identify anomalies.
+* **Data Cleaning and Preprocessing**: Handles inconsistencies, negative profit margins, and zero sales quantities to ensure data quality.
+* **Feature Engineering**: Creates new insightful metrics such as `ProfitMargin`, `StockTurnover`, and `SalesPurchaseratio`.
+* **Hypothesis Testing**: Performs a **Two-Sample T-Test** to compare profit margins between high and low-performing vendors.
+* **Data Visualization**: Generates histograms and boxplots to visualize data distributions and outliers.
+
+---
+
+## 💾 Dataset
+
+The analysis is based on the `inventory.db` SQLite database, which contains the following tables:
+* `begin_inventory`
+* `end_inventory`
+* `purchases`
+* `purchase_prices`
+* `sales`
+* `vendor_invoice`
+* `vendor_sales_summary` (aggregated table created during the analysis)
+
+---
+
+## 🛠️ Methodology
+
+The project is divided into two main parts:
+
+### 1. Data Preparation (`EDA.ipynb`)
+
+* **Database Exploration**: Connects to the `inventory.db` and examines the structure of the tables.
+* **Data Aggregation**: Creates a `vendor_sales_summary` table by combining data from multiple tables.
+* **Feature Engineering**: Calculates new features to aid in performance analysis.
+* **Data Cleaning**: Cleans the aggregated data by handling inconsistencies.
+* **Database Ingestion**: Loads the cleaned summary table back into the database.
+
+### 2. Performance Analysis (`Vendor Performance Analysis.ipynb`)
+
+* **Loading Data**: Loads the cleaned `vendor_sales_summary` table from the database.
+* **Exploratory Data Analysis**: Analyzes the summary statistics of the cleaned data and uses histograms and boxplots to visualize distributions and identify outliers.
+* **Data Filtering**: Removes records with negative gross profit and profit margins to focus on profitable transactions.
+* **Hypothesis Testing**:
+    * **Null Hypothesis (H₀)**: There is no significant difference in profit margins between top and low-performing vendors.
+    * **Alternative Hypothesis (H₁)**: There is a significant difference in profit margins.
+    * A **Two-Sample T-Test** is used to test this hypothesis.
+
+---
+
+## 📊 Results
+
+Based on the T-test performed in the analysis notebook:
+* The T-statistic and p-value are calculated to determine the statistical significance of the difference in profit margins.
+* The results indicate whether to **reject or fail to reject the null hypothesis**, providing a clear conclusion on vendor performance differences.
+
+---
+
+## 🚀 Installation
+
+To run this project, you need to have Python and the following libraries installed:
+
+```bash
+pip install pandas numpy matplotlib seaborn scipy
