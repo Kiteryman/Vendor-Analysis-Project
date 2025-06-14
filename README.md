@@ -1,62 +1,65 @@
-### **Project Title: Vendor Performance and Profitability Analysis**
+# Vendor Performance and Profitability Analysis
 
-#### **1. Project Overview**
+### 1. Business Problem & Objectives
 
-This project provides a data-driven framework for evaluating vendor performance, moving beyond simple sales metrics to focus on true profitability. The analysis leverages an inventory database to engineer key performance indicators (KPIs) and employs statistical testing to deliver actionable insights. The core finding is that **top-selling vendors are, as a group, statistically more profitable than low-selling vendors**, providing a clear direction for procurement and partnership strategy.
+Effective inventory and sales management are critical for optimizing profitability. This project addresses the need to ensure the company is not incurring losses due to inefficient pricing, poor inventory turnover, or vendor dependency.
 
-The project is executed in two distinct phases, encapsulated in two Jupyter Notebooks:
-* `EDA.ipynb`: Handles all data engineering, from raw database tables to a clean, feature-rich analytical dataset.
-* `Vendor Performance Analysis.ipynb`: Conducts the statistical analysis, visualization, and hypothesis testing to derive the final conclusions.
-
----
-
-#### **2. Business Objective**
-
-The primary goal was to answer a critical business question: **"Are our highest-volume vendors also our most profitable?"** Many businesses evaluate vendors primarily on sales volume, but this can be misleading. A high-volume vendor might operate on thin margins, while a lower-volume partner could be highly profitable. This project was designed to:
-
-* Create a robust, multi-faceted vendor scoring system using KPIs like profit margin and stock turnover.
-* Statistically validate whether a significant relationship exists between sales volume and profitability.
-* Provide a data-backed strategy for vendor management and selection.
+The primary objectives of this analysis are to:
+* Identify underperforming brands that require promotional or pricing adjustments.
+* Determine top vendors contributing to sales and gross profit.
+* Analyze the impact of bulk purchasing on unit costs.
+* Assess inventory turnover to reduce holding costs and improve efficiency.
+* Investigate and statistically validate the profitability variance between high-performing and low-performing vendors.
 
 ---
 
-#### **3. Methodology**
+### 2. Methodology
+
+The project was executed in two main phases using two separate Jupyter Notebooks:
 
 **Phase 1: Data Engineering & Feature Creation (`EDA.ipynb`)**
+This phase focused on building the foundational dataset for analysis. It involved connecting to the `inventory.db` SQLite database, aggregating data from multiple transactional tables (sales, purchases, inventory), and creating a unified `vendor_sales_summary` table. Key Performance Indicators (KPIs) were engineered to measure performance, including `GrossProfit`, `ProfitMargin`, `StockTurnover`, and `SalesPurchaseratio`.
 
-The initial phase focused on transforming raw transactional data into a usable format.
-
-1.  **Data Aggregation:** The process began by connecting to the `inventory.db` SQLite database. Data from multiple tables (`sales`, `purchases`, `begin_inventory`, `end_inventory`) were aggregated to create a single, comprehensive summary table named `vendor_sales_summary`.
-2.  **Feature Engineering:** To enable a deeper analysis, several crucial KPIs were calculated for each vendor:
-    * `GrossProfit`: The absolute profit from sales.
-    * `ProfitMargin`: The core metric, representing gross profit as a percentage of total sales revenue.
-    * `StockTurnover`: The ratio of sales quantity to purchase quantity, measuring inventory efficiency.
-    * `SalesPurchaseratio`: The ratio of sales dollars to purchase dollars.
-3.  **Data Cleaning:** The resulting dataset was cleaned to handle inconsistencies and prepare it for the analysis phase.
-
-**Phase 2: Statistical Analysis & Results (`Vendor Performance Analysis.ipynb`)**
-
-This phase used the cleaned `vendor_sales_summary` table to extract insights.
-
-1.  **Exploratory Visualization (Histograms & Boxplots):**
-    * **Histograms** were used to visualize the distribution of the newly created KPIs. This allowed for an initial understanding of the data's shape and the presence of outliers.
-    * A **Boxplot** of `ProfitMargin` was then generated to clearly visualize the median profitability, its spread across vendors, and to identify vendors with exceptionally high or low performance.
-
-2.  **Hypothesis Testing:**
-    * **Segmentation:** Vendors were segmented into two groups: "top-performing" (top 25% by `TotalSalesDollars`) and "low-performing" (bottom 25% by `TotalSalesDollars`).
-    * **Hypothesis:** A formal hypothesis was established:
-        * **Null Hypothesis (H₀):** There is no significant difference in profit margins between top and low-performing vendors.
-    * **Statistical Test:** A **Two-Sample T-Test** was performed to compare the `ProfitMargin` means of the two groups.
+**Phase 2: Statistical Analysis & Visualization (`Vendor Performance Analysis.ipynb`)**
+Using the cleaned dataset, this phase focused on deriving insights. The analysis involved:
+* **Exploratory Data Analysis:** Using histograms and boxplots to understand the distribution and characteristics of the key metrics.
+* **Vendor Segmentation:** Classifying vendors into "Top-Performing" (top 25% by sales) and "Low-Performing" (bottom 25% by sales) to enable direct comparison.
+* **Hypothesis Testing:** Applying a Two-Sample T-Test to statistically determine if there was a significant difference in profitability between these two groups.
 
 ---
 
-#### **4. Results and Conclusion**
+### 3. Analysis and Key Findings
 
-The Two-Sample T-Test yielded a statistically significant result. The p-value was below the standard threshold of 0.05, leading to a definitive conclusion.
+The analysis produced clear, data-driven findings, supported by both visualization and statistical validation.
 
-**Finding:** The null hypothesis was **rejected**. The analysis demonstrates that there is a **statistically significant difference in profit margins between top-selling and low-selling vendors.**
+#### Key Visualization: Comparative Profit Margin Boxplot
 
-**Interpretation:** This is a crucial business insight. It confirms that the vendors driving the highest sales revenue are not just volume players; they are also, as a group, generating higher profit margins for the business. The "80/20 rule" appears to hold true in this context, where a vital few vendors contribute disproportionately to overall profitability.
+A key visual from the analysis is the boxplot comparing the `ProfitMargin` of Top-Selling vs. Low-Selling vendors. This plot immediately highlights a difference in performance between the two groups, showing that the top vendors not only sell more but also operate at a higher median profitability.
 
-**Actionable Recommendation:**
-Based on this result, the business should prioritize and strengthen its relationships with its top-selling vendors. This data-driven framework can be adopted for ongoing vendor evaluations, ensuring that future partnership and procurement decisions are optimized for maximum profitability.
+* **Top Vendors Mean Profit Margin:** 48.77%
+* **Low Vendors Mean Profit Margin:** 41.55%
+
+#### Statistical Validation
+
+To formally verify the visual findings, a hypothesis test was conducted:
+
+* **$H_{0}$ (Null Hypothesis):** There is no significant difference in profit margins between top and low-performing vendors.
+* **$H_{1}$ (Alternative Hypothesis):** A significant difference exists in profit margins between the two vendor groups.
+
+**Result:** The Two-Sample T-Test resulted in a p-value less than 0.05. Therefore, the **null hypothesis is rejected**.
+
+**Conclusion:** The analysis confirms with statistical confidence that top-selling vendors have a significantly higher profit margin than low-selling vendors. This indicates that the two groups operate under distinctly different profitability models.
+
+---
+
+### 4. Final Recommendations
+
+Based on the analysis, the following actionable recommendations are proposed to enhance profitability and operational efficiency:
+
+* **Re-evaluate Pricing:** For low-sales, high-margin brands, re-evaluate pricing strategies to boost sales volume without sacrificing existing profitability.
+* **Diversify Vendor Partnerships:** Reduce dependency on a few key suppliers to mitigate supply chain risks.
+* **Leverage Bulk Purchasing:** Continue to leverage bulk purchasing advantages with top vendors to maintain competitive pricing and optimize inventory.
+* **Optimize Slow-Moving Inventory:** For products with low turnover, adjust purchase quantities, launch targeted clearance sales, or revise storage strategies to reduce holding costs.
+* **Enhance Marketing for Low-Performers:** Develop enhanced marketing and distribution strategies for low-performing vendors to drive higher sales volume.
+
+By implementing these recommendations, the company can achieve sustainable profitability, mitigate risks, and enhance overall operational efficiency.
