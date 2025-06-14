@@ -17,7 +17,7 @@ The primary objectives of this analysis are to:
 
 The project was executed in two main phases using two separate Jupyter Notebooks:
 
-**Phase 1: Data Engineering & Feature Creation (`EDA.ipynb`)**
+**Phase 1: Data Engineering & Feature Creation (`Data Cleaning & Feature Engineering.ipynb`)**
 This phase focused on building the foundational dataset for analysis. It involved connecting to the `inventory.db` SQLite database, aggregating data from multiple transactional tables (sales, purchases, inventory), and creating a unified `vendor_sales_summary` table. Key Performance Indicators (KPIs) were engineered to measure performance, including `GrossProfit`, `ProfitMargin`, `StockTurnover`, and `SalesPurchaseratio`.
 
 **Phase 2: Statistical Analysis & Visualization (`Vendor Performance Analysis.ipynb`)**
